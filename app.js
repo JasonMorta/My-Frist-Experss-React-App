@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+const path = require('path')
 const fs = require('fs');
 let projectFile = fs.readFileSync('WebProject.json');
 const bodyParser = require('body-parser');
@@ -16,7 +17,6 @@ if (process.env.NODE_ENV === 'production') {
 
 app.use(express.static(path.join(__dirname, 'frontend/build')));
 
-
 app.use(bodyParser.urlencoded({
    extended: false
 }))
@@ -25,11 +25,7 @@ app.use(bodyParser.json())
 body of the HTTP POST or PUT request using req.body (e.g.req.body.name)*/
 
 
-//Listening on port 8080
-const PORT = process.env.PORT || 8080;
-app.listen(PORT, () => {
-   console.log(`Server is listening on port ${PORT}`);
-});
+
 
 let webProjects = JSON.parse(projectFile);
 
@@ -174,4 +170,12 @@ app.put('/update', (req, res) => { //GET method
       webProjects[index].url = webProjects[index].url;
    saveToJSON()
    res.send(webProjects)
+});
+
+
+
+//Listening on port 8080
+const PORT = process.env.PORT || 8080;
+app.listen(PORT, () => {
+   console.log(`Server is listening on port ${PORT}`);
 });

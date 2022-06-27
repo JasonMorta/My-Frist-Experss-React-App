@@ -43,9 +43,6 @@ export default class App extends Component {
     url:'',});
   }
 
-
-
-
   //AddMenuUI option.
   //these handlers listen for user input changes
   //Title
@@ -81,7 +78,6 @@ export default class App extends Component {
         addUrl: '',
         })
       });
-      
   }
 
   //SAVE item to List and close itemMenuUI
@@ -89,13 +85,11 @@ export default class App extends Component {
     fetch("/add", {
       method: "POST",
       headers: {"Content-Type": "application/json"},
-
       body: JSON.stringify({
         title: this.state.title,
         description: this.state.description,
         url: this.state.url
       })
-      
        //handle errors
       })
       .then(res => res.json())
@@ -106,11 +100,7 @@ export default class App extends Component {
         description: '',
         url: '',}))
       .catch(error => console.log('Error:', error));
-      
-      console.log(this.request())
-      //clear state values after post request
-  
-      
+      //clear state values after post request   
   }
 
   //delete item from list
@@ -118,17 +108,14 @@ export default class App extends Component {
     fetch('/delete', {
       method: "DELETE",
       headers: {"Content-Type": "application/json"},
-
       body: JSON.stringify({
         id: e.target.id
       })
-      
        //handle errors
       })
       .then(res => res.json())
       .then(response => this.setState({webProjects: response}))
       .catch(error => alert('Error:', error));
-      
       // this.request()
   }
 
@@ -142,14 +129,13 @@ export default class App extends Component {
       isAdding: false,
       hide: 'block',
       addTitle: e.target.title,
-      addDes: e.target.name,
-      addUrl: e.target.longDesc,
+      addDes: e.target.dataset.des,
+      addUrl: e.target.dataset.url,
       isEditing: false,
       id: e.target.id,
-      });
-
-      //target values are obtained from the image(part of the .map)
-
+    });
+    //target values are obtained from the image(part of the .map)
+    //I used the data- attribute to store the current item data in the edit button.
   }
 
   //UPDATE Button inside itemMenuUI
@@ -159,14 +145,12 @@ export default class App extends Component {
       fetch('/update', {
         method: "PUT",
         headers: {"Content-Type": "application/json"},
-  
         body: JSON.stringify({
           id: this.state.id,
           title: this.state.title,
           description: this.state.description,
           url: this.state.url
         })
-        
          //handle errors
         })
         .then(res => res.json())
