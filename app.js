@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const fs = require('fs');
 let projectFile = fs.readFileSync('WebProject.json');
+const bodyParser = require('body-parser');
 //const fs = require('fs')
 
 
@@ -17,7 +18,7 @@ if (process.env.NODE_ENV === 'production'){
 
 
 
-const bodyParser = require('body-parser');
+
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 /*You will now be able to get data passed through in the 
