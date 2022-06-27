@@ -6,20 +6,20 @@ const bodyParser = require('body-parser');
 //const fs = require('fs')
 
 
-if (process.env.NODE_ENV === 'production'){
+if (process.env.NODE_ENV === 'production') {
    app.use(express.static(path.join(__dirname, 'frontend/build')));
-   app.get('*',(req,res)=> {res.sendFile(path.resolve(__dirname,
-   'frontend', 'build','index.html'));
+   app.get('*', (req, res) => {
+      res.sendFile(path.resolve(__dirname,
+         'frontend', 'build', 'index.html'));
    });
-   }
+}
 
-   app.use(express.static(path.join(__dirname,'frontend/build')));
-
-
+app.use(express.static(path.join(__dirname, 'frontend/build')));
 
 
-
-app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.urlencoded({
+   extended: false
+}))
 app.use(bodyParser.json())
 /*You will now be able to get data passed through in the 
 body of the HTTP POST or PUT request using req.body (e.g.req.body.name)*/
@@ -73,8 +73,8 @@ let itemId = webProjects.length;
 //User must enter specific KEY's in postman with any value to make a successful POST request
 //On POST user will see there new item in webProjects-array
 app.post('/add', (req, res) => {
-  
-   itemId+1;
+
+   itemId + 1;
 
    //This Item stores the user data as an object.
    //This object will then be pushed into the webProjects-array.
@@ -108,13 +108,13 @@ app.get('/api', (req, res) => { //GET method
 
    webProjects.forEach(
       item => { //Loop over each object item
-      reply += `
+         reply += `
       Title:  ${item.title}
       Description:  ${item.description}
       URL:  ${item.URL}
       ID: ${item.id}
       `
-   }
+      }
    );
    res.send(webProjects) //sends array item to server.
 });
@@ -137,15 +137,15 @@ app.delete('/delete', (req, res) => {
       res.send("OOPs, add a number grater the -0")
    } else {
 
-     // res.send(`${webProjects[req.body.id].title} was removed`)
+      // res.send(`${webProjects[req.body.id].title} was removed`)
       webProjects.splice(indexOfObject, 1);
-      webProjects.forEach((item, index) => item.id = index)//updated array item id's with new values
+      webProjects.forEach((item, index) => item.id = index) //updated array item id's with new values
       //rewrite id's in order
       saveToJSON()
       res.send(webProjects)
-     //log(webProjects)
+      //log(webProjects)
    }
-   
+
 });
 
 
@@ -162,16 +162,16 @@ app.put('/update', (req, res) => { //GET method
 
    //This adds the user update if an update was made. Else, it stays the same
    webProjects[index].title = req.body.title ?
-   webProjects[index].title = req.body.title :
-   webProjects[index].title = webProjects[index].title;
+      webProjects[index].title = req.body.title :
+      webProjects[index].title = webProjects[index].title;
 
    webProjects[index].description = req.body.description ?
-   webProjects[index].description = req.body.description :
-   webProjects[index].description = webProjects[index].description;
+      webProjects[index].description = req.body.description :
+      webProjects[index].description = webProjects[index].description;
 
    webProjects[index].url = req.body.url ?
-   webProjects[index].url = req.body.url :
-   webProjects[index].url = webProjects[index].url;
+      webProjects[index].url = req.body.url :
+      webProjects[index].url = webProjects[index].url;
    saveToJSON()
    res.send(webProjects)
 });
