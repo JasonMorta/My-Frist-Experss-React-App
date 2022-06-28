@@ -31,7 +31,6 @@
     bottom: 0;
     right: 10px;
     transition: .3s;
-    z-index: 1;
 }
 
 .edit {
