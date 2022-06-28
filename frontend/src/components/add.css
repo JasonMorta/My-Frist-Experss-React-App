@@ -34,7 +34,8 @@ dialog {
 }
 
 .list-container h3 {
-   color: slateblue;
+   color: #ea7798;
+    margin-bottom: 15px;
 }
 
 .textField {

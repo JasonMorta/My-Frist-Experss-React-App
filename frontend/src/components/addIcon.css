@@ -10,6 +10,7 @@
 .add-icon:hover {
     transform: scale(1.8);
     transition: .2s;
+    cursor: pointer;
 }
 .add-icon:active {
     transform: scale(1.4);

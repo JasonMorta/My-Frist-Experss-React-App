@@ -28,7 +28,7 @@ export default function BasicTable(props) {
         id={item.id} 
         title={item.title} 
         data-des={item.description}
-        data-url={item.URL} />
+        data-link={item.URL} />
       </div>
 
       <div className="delete" id={item.id} onClick={props.handleDelete}>

@@ -6,16 +6,16 @@ import TextField from "@mui/material/TextField";
 export default function AddMenu(props) {
 
   //switch between update and save button
-let saveBtn =  props.isEditing ? 
-              <Button 
-              onClick={props.saveNewItem}
-              variant="contained"
-              >SAVE </Button>
-              :
-              <Button 
-              onClick={props.updateItem}
-              variant="contained"
-              >Update </Button>;
+// let saveBtn =  props.isEditing ? 
+//               <Button 
+//               onClick={props.saveNewItem}
+//               variant="contained"
+//               >SAVE </Button>
+//               :
+//               <Button 
+//               onClick={props.updateItem}
+//               variant="contained"
+//               >Update </Button>;
 
 
   return (
@@ -29,29 +29,31 @@ let saveBtn =  props.isEditing ?
             id="outlined-basic"
             label={props.addTitle ? props.addTitle : "Title"}
             variant="outlined"
-            onChange={props.handleTitle}
+            onInput={props.handleTitle}
             value={props.title}
           />
           <TextField
-            required
             className="textField"
             id="outlined-basic"
             label={props.addTitle ? props.addDes : "Description"}
             variant="outlined"
-            onChange={props.handleDescription}
+            onInput={props.handleDescription}
             value={props.description}
           />
           <TextField
-            required
+            
             className="textField"
             id="outlined-basic"
             label={props.addTitle ? props.addUrl : "URL"}
             variant="outlined"
-            onChange={props.handleURL}
+            onInput={props.handleURL}
             value={props.url}
           />
 
-          {saveBtn}
+          <Button 
+              onClick={props.saveNewItem}
+              variant="contained"
+              >SAVE </Button>       
 
           <Button 
           onClick={props.closeBox}
