@@ -187,16 +187,11 @@ export default class App extends Component {
     <section className="App-header">
       <div className='menu-container'>
 
-       
-
-        {/* <DropDowList 
-        menuItems={this.state.webProjects.title}
-        item={this.state.webProjects}
-        handleClick={this.handleClick.bind(this)}
-        handleChoseOption={this.handleChoseOption.bind(this)}/> */}
+      
       </div>
-
+      <h2>My Project List</h2>
       <div className='item-container'>
+       
       <AddIcon handleAddItem={this.handleAddItem.bind(this)} />
         <ProjectList
         listItem={this.state.webProjects}
