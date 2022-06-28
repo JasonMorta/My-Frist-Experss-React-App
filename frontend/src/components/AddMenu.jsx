@@ -5,6 +5,8 @@ import TextField from "@mui/material/TextField";
 
 export default function AddMenu(props) {
 
+  const [state, setState]=React.useState(props.urlValue)
+
   //switch between update and save button
 let saveBtn =  props.isEditing ? 
               <Button 
@@ -24,7 +26,6 @@ let saveBtn =  props.isEditing ?
         {props.isAdding ? <h3>Add Project</h3>: <h3>Edit Item</h3>}
         <div id="text-field">
           <TextField
-            required
             className="textField"
             id="outlined-basic"
             label={props.addTitle ? props.addTitle : "Title"}
@@ -33,7 +34,6 @@ let saveBtn =  props.isEditing ?
             value={props.title}
           />
           <TextField
-            required
             className="textField"
             id="outlined-basic"
             label={props.addTitle ? props.addDes : "Description"}
@@ -42,13 +42,13 @@ let saveBtn =  props.isEditing ?
             value={props.description}
           />
           <TextField
-            required
             className="textField"
             id="outlined-basic"
             label={props.addTitle ? props.addUrl : "URL"}
             variant="outlined"
             onChange={props.handleURL}
-            value={props.url}
+            value={state}
+            
           />
 
           {saveBtn}

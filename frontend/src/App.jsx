@@ -26,7 +26,8 @@ export default class App extends Component {
       itemTitle: false,
       addTitle: false,
       addDes: '',
-      addUrl: '',
+      addUrl: "",
+      
       updateState: '',
     }
   
@@ -144,7 +145,7 @@ export default class App extends Component {
       hide: 'block',
       addTitle: e.target.title,
       addDes: e.target.dataset.des,
-      addUrl: e.target.dataset.url,
+      urlValue: e.target.dataset.url,
       isEditing: false,
       id: e.target.id,
     });
@@ -217,7 +218,9 @@ export default class App extends Component {
       handleURL={this.url.bind(this)}
       saveNewItem={this.saveNewItem.bind(this)}
       updateItem={this.updateItem.bind(this)}
-      closeBox={this.closeBox.bind(this)} />
+      closeBox={this.closeBox.bind(this)}
+      urlValue={this.state.urlValue} />
+      
     </section>
     </div>
     )
