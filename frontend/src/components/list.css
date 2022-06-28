@@ -36,7 +36,8 @@
     position: absolute;
     bottom: 0;
     right: 0.625rem;
-    transition: .3s;
+    transition: .1s;
+    z-index: 1;
 }
 
 .edit {
@@ -45,7 +46,7 @@
    bottom: 0;
    right: 0.625rem;
    bottom: 2.1875rem;
-   transition: .3s;
+   transition: .1s;
    z-index: 1;
 }
 
@@ -55,18 +56,18 @@
    z-index: 0;
    width: 1.25rem;
    filter: drop-shadow(0.0625rem 0.0625rem 0.125rem gray);
-   transition: .3s;
+   transition: .1s;
    transform: scale(1);
 }
 
 .container img:hover{
    color: #C22948;
-   transition: .3s;
+   transition: .2s;
    filter: drop-shadow(0 0 0 black);
    cursor: pointer;
 }
 
 .container img:active {
-   transform: scale(1.1);
-   transition: .2s;
+   transform: scale(1.8);
+   transition: .1s;
 }

@@ -72,7 +72,7 @@ app.post('/add', (req, res) => {
       "id": itemId,
       "title": `${req.body.title}`,
       "description": `${req.body.description}`,
-      "URL": `${req.body.url}`
+      "url": `${req.body.url}`
    }
 
    //Check key.values pairs before push().

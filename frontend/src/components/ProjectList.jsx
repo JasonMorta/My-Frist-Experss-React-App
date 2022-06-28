@@ -17,8 +17,8 @@ export default function BasicTable(props) {
       <p>
         <span>URL</span>
       </p>
-      <a href={item.URL} target="_black">
-        <p>{item.URL}</p>
+      <a href={item.url} target="_black">
+        <p>{item.url}</p>
       </a>
 
       <div className="edit" id={item.id} onClick={props.handleEdit}>
@@ -28,7 +28,7 @@ export default function BasicTable(props) {
         id={item.id} 
         title={item.title} 
         data-des={item.description}
-        data-link={item.URL} />
+        data-link={item.url} />
       </div>
 
       <div className="delete" id={item.id} onClick={props.handleDelete}>
