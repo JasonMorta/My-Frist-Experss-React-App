@@ -34,30 +34,31 @@ export default function EditItem(props) {
           <TextField
             className="textField"
             id="outlined-basic"
-            label="Title"
+            label={props.addTitle ? props.addTitle : "Title"}
             variant="outlined"
-            onChange={props.handleTitle}
+            onInput={props.handleTitle}
+            defaultValue={props.titleValue}
           />
           <TextField
             className="textField"
             id="outlined-basic"
             label="Description"
             variant="outlined"
-            onChange={props.handleDescription}
+            onInput={props.handleDescription}
+            defaultValue={props.desValue}
           />
           <TextField
             className="textField"
             id="outlined-basic"
             label="URL"
             variant="outlined"
-            onChange={props.handleURL}
+            onInput={props.handleURL}
+            defaultValue={props.inputURL}
           />
-
           <Button 
-          onClick={props.saveAndClose}
+          onClick={props.updateItem}
           variant="contained"
-          >SAVE </Button>
-
+          >Update </Button>
           <Button 
           onClick={props.closeBox}
           variant="contained"

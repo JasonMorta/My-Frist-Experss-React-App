@@ -20,14 +20,16 @@ html {
 }
 
 .item-container {
-  min-width: 320px;
-  /* height: 252px; */
   position: relative;
+  max-width: 800px;
   margin-bottom: 50px;
   overflow: auto;
+  display: flex;
   border-radius: 5px;
   background: #e0e0e0;
-  box-shadow:  20px 20px 60px #bebebe,
-             -20px -20px 60px #ffffff;
+  box-shadow: 20px 20px 60px #bebebe, -20px -20px 60px #ffffff;
+  flex-direction: row;
+  justify-content: flex-start;
+  flex-wrap: wrap;
 }
 

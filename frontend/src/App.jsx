@@ -4,7 +4,7 @@ import React, { Component } from 'react'
 import AddMenu from './components/AddMenu';
 //import DropDowList from './components/DropDownList';
 import AddIcon from './components/AddIcon';
-//import EditItem from './components/EditItem';
+import EditItem from './components/EditItem';
 
 
 export default class App extends Component {
@@ -13,7 +13,7 @@ export default class App extends Component {
 
     this.state = {
       isAdding: false,
-      isEditing: true,
+      isEditing: false,
       hide: 'none',
       itemMenuUI: 'none',
       id: '',
@@ -24,10 +24,9 @@ export default class App extends Component {
       webProjects: [],
       value: 'Select Project',
       itemTitle: false,
-      addTitle: false,
+      addTitle: '',
       addDes: '',
-      addUrl: "",
-      
+      addUrl: '',
       updateState: '',
     }
   
@@ -52,7 +51,9 @@ export default class App extends Component {
   //This function only closes the itemMenuUI
   //in nothing was added
   closeBox = (e) => {
-    this.setState({hide: 'none',
+    this.setState({
+    isAdding: false,
+    isEditing: false,
     title: '',
     description: '',
     url:'',});
@@ -60,18 +61,20 @@ export default class App extends Component {
 
   //AddMenuUI option.
   //these handlers listen for user input changes
-  //Title
+  //Title add user input value to state
   title = (e) =>{
     this.setState({title: e.target.value});
     console.log(this.state.title)
   }
-  //Description
+  //Description add user input value to state
   description = (e) =>{
     this.setState({description: e.target.value});
   }
-  //URL
-  url = (e) =>{
-    this.setState({url: e.target.value});
+  //URL add user input value to state
+  handleURL = (e) =>{
+    this.setState({url: e.target.value},()=>{
+      console.log(this.state.url)
+    });
     
   }
 
@@ -80,8 +83,7 @@ export default class App extends Component {
   //This function only opens the itemMenuUIU
   //to and clears input field values
   handleAddItem = ()=>{
-    this.setState({
-      isEditing: true,}, ()=>{
+    this.setState({}, ()=>{
         this.setState({
         isAdding: true,
         hide: 'block',
@@ -101,21 +103,20 @@ export default class App extends Component {
       method: "POST",
       headers: {"Content-Type": "application/json"},
       body: JSON.stringify({
+        id:this.state.id,
         title: this.state.title,
         description: this.state.description,
-        url: this.state.url
+        url: this.state.url,
       })
        //handle errors
       })
       .then(res => res.json())
       .then(response => this.setState({//Where state get updated and reloads page.
         webProjects: response,
-        hide: 'none',
-        title: '',
-        description: '',
-        url: '',}))
+        hide: 'none'}))
       .catch(error => console.log('Error:', error));
       //clear state values after post request   
+      console.log(this.state.webProjects)
   }
 
   //delete item from list
@@ -142,11 +143,11 @@ export default class App extends Component {
    // e.target.useMap = e.target.title
     this.setState({
       isAdding: false,
+      isEditing: true,
       hide: 'block',
-      addTitle: e.target.title,
-      addDes: e.target.dataset.des,
-      urlValue: e.target.dataset.url,
-      isEditing: false,
+      titleValue: e.target.title,
+      desValue: e.target.dataset.des,
+      inputURL: e.target.dataset.link,
       id: e.target.id,
     });
     //target values are obtained from the image(part of the .map)
@@ -166,17 +167,21 @@ export default class App extends Component {
           description: this.state.description,
           url: this.state.url
         })
+        
          //handle errors
         })
         .then(res => res.json())
-        .then(response => this.setState({//Where state get updated and reloads page.
+        .then(response => this.setState({
+          //Where state get updated and reloads page.
           webProjects: response,
+          isEditing: false,
           hide: 'none',
           title: '',
           description: '',
           url: '',}))
+        
         .catch(error => console.log('Error:', error));
-        this.setState({hide: 'none'})
+        console.log(this.state.webProjects)
        
   }
 
@@ -190,7 +195,7 @@ export default class App extends Component {
 
       
       </div>
-      <h2>My Project List</h2>
+      <h2 style={{color: "#ea7798", marginBottom: "15px"}}>My Project List</h2>
       <div className='item-container'>
        
       <AddIcon handleAddItem={this.handleAddItem.bind(this)} />
@@ -202,25 +207,43 @@ export default class App extends Component {
         />
         
         </div>
+      {this.state.isAdding ?
       <AddMenu 
       url={this.state.url}
       description={this.state.description}
       title={this.state.title}
-      isEditing={this.state.isEditing}
+      isAdding={this.state.isAdding}
       addDes={this.state.addDes}
       addUrl={this.state.addUrl}
       addTitle={this.state.addTitle}
       itemTitle={this.state.itemTitle}
-      isAdding={this.state.isAdding}
       itemMenuUI={this.state.hide}
       handleTitle={this.title.bind(this)}
       handleDescription={this.description.bind(this)}
-      handleURL={this.url.bind(this)}
+      handleURL={this.handleURL.bind(this)}
       saveNewItem={this.saveNewItem.bind(this)}
+      closeBox={this.closeBox.bind(this)} 
+      />:
+      <></>
+      }
+
+      {this.state.isEditing ?
+      <EditItem 
+      addTitle={this.state.addTitle}
+      handleTitle={this.title.bind(this)}
+      handleDescription={this.description.bind(this)}
+      handleURL={this.handleURL.bind(this)}
+      isEditing={this.state.isEditing}
+      // description={this.state.description}
+      title={this.state.title}
       updateItem={this.updateItem.bind(this)}
       closeBox={this.closeBox.bind(this)}
-      urlValue={this.state.urlValue} />
-      
+      titleValue={this.state.titleValue}
+      desValue={this.state.desValue}
+      inputURL={this.state.inputURL}
+      />:
+      <></>}
+
     </section>
     </div>
     )

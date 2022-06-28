@@ -2,8 +2,8 @@
    display: flex;
     flex-direction: column;
     padding: 10px;
-    min-width: 300px;
-    max-width: 400px;
+    min-width: 380px;
+    font-size: smaller;
     text-align: left;
     border-bottom: 2px solid #C22948;
     -moz-border-image: -moz-linear-gradient(right, #e0e0e0 0%, #76aed9 50%, #dedede 100%);
@@ -16,12 +16,12 @@
 .container p,
 .container a {
    margin: 0px;
-   color: cadetblue;
+   color: #455a64;
    width: fit-content;
 }
 
 .container span {
-   color: #4f4b4b;
+   color: #de7699;
    font-size: smaller;
 }
 
@@ -58,6 +58,7 @@
    color: #C22948;
    transition: .3s;
    filter: drop-shadow(0 0 0 black);
+   cursor: pointer;
 }
 
 .container img:active {

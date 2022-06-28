@@ -101,7 +101,7 @@ app.get('/api', (req, res) => { //GET method
          reply += `
       Title:  ${item.title}
       Description:  ${item.description}
-      URL:  ${item.URL}
+      URL:  ${item.url}
       ID: ${item.id}
       `
       }
