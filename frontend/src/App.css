@@ -22,7 +22,7 @@ html {
 .item-container {
   position: relative;
   max-width: 800px;
-  margin-bottom: 50px;
+  margin-bottom: 65px;
   overflow: auto;
   display: flex;
   border-radius: 5px;
