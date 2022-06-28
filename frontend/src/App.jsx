@@ -29,9 +29,23 @@ export default class App extends Component {
       addUrl: '',
       updateState: '',
     }
-  //this.request = this.request.bind(this)
-  console.log(this.state.hide)
+  
   }
+
+
+    //API POST request to retrieve data
+    request = async function () {
+      const response = await fetch("/api")
+      const data = await response.json(); //convert data to json
+      this.setState({webProjects: data})
+      console.log(this.state.webProjects)
+    }; //end of request
+  
+    
+    componentDidMount(){
+      this.request()
+     
+    }
 
   //close AddMenu
   //This function only closes the itemMenuUI
@@ -165,19 +179,7 @@ export default class App extends Component {
        
   }
 
-  //API POST request to retrieve data
-  request = async function () {
-    const response = await fetch("/api")
-    const data = await response.json(); //convert data to json
-    this.setState({webProjects: data})
-    console.log(this.state.webProjects)
-  }; //end of request
 
-  
-  componentDidMount(){
-    this.request()
-   
-  }
 
   render() {
     return (
@@ -185,16 +187,11 @@ export default class App extends Component {
     <section className="App-header">
       <div className='menu-container'>
 
-       
-
-        {/* <DropDowList 
-        menuItems={this.state.webProjects.title}
-        item={this.state.webProjects}
-        handleClick={this.handleClick.bind(this)}
-        handleChoseOption={this.handleChoseOption.bind(this)}/> */}
+      
       </div>
-
+      <h2>My Project List</h2>
       <div className='item-container'>
+       
       <AddIcon handleAddItem={this.handleAddItem.bind(this)} />
         <ProjectList
         listItem={this.state.webProjects}
