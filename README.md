@@ -10,7 +10,7 @@ This RESTful API allows a user to GET, POST, DELETE and PUT, a list of data.
 Got to your vscode terminal and do the following.
 
 ```bash
-  cd restful_api
+  cd directory
   npm install 
   nmp start
 ```
@@ -82,4 +82,10 @@ Got to your vscode terminal and do the following.
 | :--------     | :-------    | :-------------------------------- |
 | `id`       | `string` |  Add the id of the item you want to delete |
 
+
+
+
+## Preview
+
+[Live Demo](https://wd-project-list.herokuapp.com/)
 
