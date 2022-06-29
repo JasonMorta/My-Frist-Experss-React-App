@@ -1,5 +1,5 @@
 dialog {
-   padding: 10px;
+   padding: 0.625rem;
    /* display: flex; */
    flex-direction: column;
    align-items: center;
@@ -12,42 +12,40 @@ dialog {
 #text-field {
    display: flex;
     flex-direction: column;
-    padding: 10px;
+    padding: 0.625rem;
 }
 
 .list-container {
-   margin: 7px;
-   border: 0px;
+   margin: 0.4375rem;
+   border: 0rem;
    transition: .5s;
-   border-radius: 5px;
-   padding: 5px;
+   border-radius: 0.3125rem;
+   padding: 0.3125rem;
    width: fit-content;
    position: fixed;
    z-index: 10;
    opacity: 1;
    top: 50%;
-   left: 50%;
+   left: 48%;
    color: wheat;
-   box-shadow: 1px 0px 5px -2px #000000;
+   box-shadow: 0.0625rem 0rem 0.3125rem -0.125rem #000000;
    transform: translate(-50%, -50%);
    background: linear-gradient(to left, #bababa, #dedede);
 }
 
 .list-container h3 {
    color: #ea7798;
-    margin-bottom: 15px;
+    margin-bottom: 0.9375rem;
 }
 
 .textField {
-margin: 10px !important;
+margin: 0.625rem !important;
 }
 
-TextField{
 
-}
 
 .MuiButton-root {
-   margin: 10px!important;
+   margin: 0.625rem!important;
 }
 
 .MuiOutlinedInput-input {
