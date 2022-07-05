@@ -177,8 +177,8 @@ if (process.env.NODE_ENV === 'production') {
 
 
 
-//Listening on port 8080
-const PORT = process.env.PORT || 8080;
+//Listening on port 07032020
+const PORT = process.env.PORT || 1001;
 app.listen(PORT, () => {
    console.log(`Server is listening on port ${PORT}`);
 });

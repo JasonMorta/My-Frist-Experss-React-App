@@ -143,12 +143,15 @@ export default class App extends Component {
     this.setState({
       isAdding: false,
       isEditing: true,
-      hide: "block",
       titleValue: e.target.title,
       desValue: e.target.dataset.des,
       inputURL: e.target.dataset.link,
       id: e.target.id,
+    }, ()=>{
+      console.log( this.state.desValue)
     });
+
+    
     //target values are obtained from the image(part of the .map)
     //I used the data- attribute to store the current item data in the edit button.
   };
@@ -237,7 +240,7 @@ export default class App extends Component {
               handleTitle={this.title.bind(this)}
               handleDescription={this.description.bind(this)}
               handleURL={this.handleURL.bind(this)}
-              isEditing={this.state.isEditing}
+           
               // description={this.state.description}
               title={this.state.title}
               updateItem={this.updateItem.bind(this)}
